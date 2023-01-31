@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ExplainPage from "../pages/Explain/ExplainPage";
 
 function Explain() {
   let navigate = useNavigate();
@@ -10,7 +11,7 @@ function Explain() {
       return navigate("/");
     }
   }, []);
-  return <div>Explain</div>;
+  return <ExplainPage />;
 }
 
 export default Explain;

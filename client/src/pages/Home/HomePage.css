@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.12s cubic-bezier(0.42, 0.54, 0.22, 1.26);
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.landing-page {
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    overflow: hidden;
+    position: relative;
+}
+
+.landing-content h1 {
+    color: white;
+    font-size: 6rem;
+    text-align: center;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.51);
+}

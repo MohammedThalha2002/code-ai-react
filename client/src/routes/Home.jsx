@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { LogoutFirebase } from "../firebase/authentications";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HomePage from "../pages/Home/HomePage";
 
 function Home() {
   let navigate = useNavigate();
@@ -44,12 +45,9 @@ function Home() {
   };
   // console.log(token);
   return (
-    <div className="bg-highlight h-screen">
+    <div>
       <ToastContainer />
-      <div>
-        <h1>Home</h1>
-        <button onClick={handleLogout}>LOGOUT</button>
-      </div>
+      <HomePage />
     </div>
   );
 }

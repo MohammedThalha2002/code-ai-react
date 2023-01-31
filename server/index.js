@@ -1,23 +1,100 @@
-const express = require("express");
+import express from "express";
+import * as dotenv from "dotenv";
+import cors from "cors";
+import { Configuration, OpenAIApi } from "openai";
+
+dotenv.config();
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+console.log(process.env.OPENAI_API_KEY);
+
+const openai = new OpenAIApi(configuration);
 
 const app = express();
-// middleware
+app.use(cors());
 app.use(express.json());
 
-// get
-// localhost:3000/
 app.get("/", (req, res) => {
-  console.log("getting request");
-  res.send("hello world");
-});
-// localhost:3000/home
-app.get("/home", (req, res) => {
-  res.send("Welcome to homepage");
+  res.status(200).send("Hello Code Ai server is started");
 });
 
-app.post("/login", (req, res) => {
-  console.log(req.body);
-  res.send("sucesssfully posted");
+// converts the following code from one lang to other
+
+app.post("/convert", async (req, res) => {
+  try {
+    const prompt = req.body.prompt;
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `${prompt}`,
+      temperature: 0,
+      max_tokens: 1000,
+      top_p: 1,
+      frequency_penalty: 0.5,
+      presence_penalty: 0,
+      stop: ['"""'],
+    });
+
+    res.status(200).send({
+      bot: response.data.choices[0].text,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error });
+  }
 });
 
-app.listen(3000);
+// explain the code functions
+
+app.post("/explain", async (req, res) => {
+  try {
+    const prompt = req.body.prompt;
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `${prompt}`,
+      temperature: 0,
+      max_tokens: 1000,
+      top_p: 1,
+      frequency_penalty: 0.5,
+      presence_penalty: 0,
+      stop: ['"""'],
+    });
+
+    res.status(200).send({
+      bot: response.data.choices[0].text,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error });
+  }
+});
+
+// find the error in the code
+app.post("/error", async (req, res) => {
+  try {
+    const prompt = req.body.prompt;
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `${prompt}`,
+      temperature: 0,
+      max_tokens: 1000,
+      top_p: 1,
+      frequency_penalty: 0.5,
+      presence_penalty: 0,
+      stop: ['"""'],
+    });
+
+    res.status(200).send({
+      bot: response.data.choices[0].text,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error });
+  }
+});
+
+app.listen(5000, () => {
+  console.log("Server is started");
+});

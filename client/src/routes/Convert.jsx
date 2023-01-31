@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ConvertPage from "../pages/Convert/ConvertPage";
 
 function Convert() {
   let navigate = useNavigate();
@@ -10,7 +11,7 @@ function Convert() {
       return navigate("/");
     }
   }, []);
-  return <div>Convert</div>;
+  return <ConvertPage />;
 }
 
 export default Convert;

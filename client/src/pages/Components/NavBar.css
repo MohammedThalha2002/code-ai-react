@@ -1,0 +1,52 @@
+.home-nav {
+    top: 0;
+    left: 0;
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.logo {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+}
+
+.logo h1 {
+    color: white;
+    font-size: 2rem;
+}
+
+.nav-items {
+    width: 40vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-items h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    position: relative;
+}
+
+.nav-items h1:hover {
+    cursor: pointer;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.51);
+}
+
+.landing-content {
+    z-index: 10;
+    position: absolute;
+    bottom: 8rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: block;
+    transition: ease-in;
+    transition-duration: 50ms;
+}
